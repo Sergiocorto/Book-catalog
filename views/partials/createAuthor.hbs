@@ -1,0 +1,46 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="successAlert" class="alert alert-success alert-add-author" role="alert">Автор добавлен </div>
+            <div id="errorAlert" class="alert alert-danger alert-add-author" role="alert">Произошла ошибка. Попробуйте еще раз</div>
+            <form id="add_author" method = "post" action="/api/authors">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Author</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-9 pr-1">
+                            <div class="form-group">
+                                <label>Lastname</label>
+                                <input name = "lastname" type="text" class="form-control" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9 pr-1">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input name = "name" type="text" class="form-control" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9 pr-1">
+                            <div class="form-group">
+                                <label>Patronymic</label>
+                                <input name = "patronymic" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Author Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
