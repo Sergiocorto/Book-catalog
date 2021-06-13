@@ -1,0 +1,60 @@
+<div class="modal fade" id="bookAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="success alert" class="alert alert-success alert-add-author" role="alert">Книга добавлена</div>
+            <form id="add_book" method = "post" enctype="multipart/form-data" action="api/books">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Author</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-9 pr-1">
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input name = "title" type="text" class="form-control" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9 pr-1">
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea name = "description" type="text" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9 pr-1">
+                            <div class="form-group">
+                                <label>Image</label>
+                                <input name = "image" type="file" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label>Authors</label>
+                                <div id="authorsList" class="form-group form-control">
+                                </div>
+                                <select onchange="addToList(this)" class="form-control" name="author">
+                                    <option value = 0>Не выбрано</option>
+                                    {{#each authors}}
+                                    <option value ='{{ _id }}'>{{ lastname }} {{ name }} {{ patronymic }}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button name ="submit" type="submit" class="btn btn-primary">Add Book</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

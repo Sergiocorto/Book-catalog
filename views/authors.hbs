@@ -1,0 +1,50 @@
+<div class="row m-1">
+    <div class="col-2">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <button type="button" class="btn btn-outline-primary" onclick="sort(this)" data-flag="authors" data-url="/api/authors/sort/lastname">
+                Сортировать по фамилии
+            </button>
+        </div>
+    </div>
+    <div class="col-10">
+        <div class = "container">
+            <div class = "row" id="authors">
+                <div class = "container">
+                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
+                        Add Author
+                    </button>
+                    <div id="searchAuthors" class="form-inline my-2 my-lg-0 btn-card">
+                        <input class="form-control mr-sm-2" type="search" id="search" placeholder="Search" aria-label="Search">
+                        <button id="searchBtn" class="btn btn-outline-success my-2 my-sm-0" onclick="search(this)" data-flag="authors" data-url="/api/authors/search/" disabled>Search</button>
+                    </div>
+                </div>
+                <div class="container body">
+                    {{#each authors}}
+                    <div class="card w-100 author-{{_id}}">
+                        <div class="card-body">
+                            <form name="authorForm">
+                                <div class="authorCard authorName author-{{_id}}">
+                                    <p class="name" name="lastname" onformdata="lastname">{{lastname}}</p>
+                                    <p class="name" name="name">{{name}}</p>
+                                    <p class="name" name="patronymic">{{patronymic}}</p>
+                                    <input class="name" name="id" readonly type="hidden" value="{{_id}}">
+                                </div>
+                                <div class="btn-group btn-card authorCard">
+                                    <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#editModalWindow">
+                                        Edit
+                                    </button>
+                                    <button type="button" class="btn btn-danger" onclick="deleteAuthor(this)" data-link="/api/authors/{{_id}}">
+                                        Delete
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{> createAuthor}}
+{{> editAuthor}}
