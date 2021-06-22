@@ -19,6 +19,7 @@ $('#add_book').on('submit', async function (e) {
     let data = new FormData(this)
     data.append('authorsId', authorsId)
 
+    console.log(data.image)
     const res = await requestToBackend($(this).attr('action'), 'POST', data)
 
     if(!checkIsError(res)) {
@@ -86,11 +87,11 @@ async function sort(btn) {
 }
 
 //Search function for authors/books
-function search(btn) {
+async function search(btn) {
 //Create variable request addresses
     let url = $(btn).data('url') + $('#search').val()
 
-    const res = requestToBackend(url, 'GET')
+    const res = await requestToBackend(url, 'GET')
 
     if (!checkIsError(res)) {
         refreshList(res.data, $(btn).data('flag'))
