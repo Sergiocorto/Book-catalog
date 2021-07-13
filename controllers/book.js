@@ -31,7 +31,7 @@ module.exports.create = async function(req, res){
 
     try{
         await book.save()
-        res.status(200).json(book)
+        res.status(201).json(book)
     }catch(error) {
         console.log(error)
     }
