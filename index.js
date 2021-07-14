@@ -18,13 +18,14 @@ const hbs = handlebars.create({
     defaultLayout: 'main',
     extname: 'hbs'
 })
+app.engine('hbs', hbs.engine)
+app.set('view engine', 'hbs')
+app.set('views', 'views')
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
-app.engine('hbs', hbs.engine)
-app.set('view engine', 'hbs')
-app.set('views', 'views')
+
 
 const PORT = port || 5000
 
