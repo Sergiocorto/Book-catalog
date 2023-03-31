@@ -1,8 +1,7 @@
-import * as mongoose from 'mongoose'
+import {Schema, model} from 'mongoose'
+import {IAuthor} from '../interfaces/IAuthor'
 
-const Schema = mongoose.Schema
-
-const authorSchema = new Schema({
+const authorSchema = new Schema<IAuthor>({
     name: {
         type: String,
         required: true
@@ -17,4 +16,4 @@ const authorSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model('authors', authorSchema)
+export default model('authors', authorSchema)

@@ -1,13 +1,15 @@
 import * as http from 'http'
+import Author from '../models/Author'
 
 export class AuthorController {
 
-    getAll = (req: http.IncomingMessage, res: http.ServerResponse)=>{
+    getAll = async function(req: http.IncomingMessage, res: http.ServerResponse){
 
         try{
-            const url = req.url
-
-            res.end(url)
+            const authors = await Author.find().lean()
+            const data = {authors: authors}
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify(data));
             
         }catch (e) {
             console.error(res, e)
